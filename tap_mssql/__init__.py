@@ -93,6 +93,11 @@ def schema_for_column(c):
     if data_type == "bit":
         result.type = ["null", "boolean"]
 
+    elif data_type == 'tinyint':
+        result.type = ["null", "integer"]
+        result.minimum = 0
+        result.maximum = 255
+
     elif data_type in BYTES_FOR_INTEGER_TYPE:
         result.type = ["null", "integer"]
         bits = BYTES_FOR_INTEGER_TYPE[data_type] * 8
